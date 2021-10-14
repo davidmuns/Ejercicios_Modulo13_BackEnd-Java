@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Actualizar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<style>
+		body {
+			background-color: rgb(175, 207, 209);
+		}
+	</style>
+
+</head>
+
+<body>
+    <div class="container my-5">
+    	<p>
+    		<a href="/empleados/" class="btn btn-dark">Ir a lista</a>
+        </p>
+        <h3>Actualizar datos empleado</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-8">
+                    <form th:action="@{/empleados/actualizar/{id}(id=${empleado.id})}" th:object="${empleado}" method="post">
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="nombre" class="col-form-label">Nombre</label> <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Nombre"> <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="apellidos" class="col-form-label">Apellidos</label> <input type="text" th:field="*{apellidos}" class="form-control" id="apellidos" placeholder="Apellidos"> <span th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+								<label for="cargo" class="col-form-label">Cargo</label><br>
+								<select th:field="*{cargo}" class="col-form-select" aria-label="Default select example">
+									<option th:each="cargo :${T(com.empleado.entity.CargoEnum).values()}"
+									th:value="${cargo}" th:text="${cargo.nombre}"></option>
+								</select>
+							</div>
+
+                            <div class="form-group col-md-8">
+                                <input type="submit" class="btn btn-primary" value="actualizar">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

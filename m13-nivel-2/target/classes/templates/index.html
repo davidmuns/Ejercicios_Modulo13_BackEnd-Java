@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Empleados</title>
+	<style>
+		body {
+  			background-color: rgb(97, 103, 24);
+		}
+		h1 {
+  			margin-left: 120px;
+  			font-size: 40px;
+		}
+		table {
+  			font-family: Arial, Helvetica, sans-serif;
+  			border-collapse: collapse;
+  			width: 80%;
+		}
+		table th, table td {
+  			border: 1px solid;
+  			padding: 4px;
+		}
+		table th {
+			background-color: rgb(128, 255, 255);
+		}
+		table td{
+			background-color: white;
+			border-color: rgb(128, 128, 0);
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1 align="center" style="width: 990px; "><a style=color:black; th:href="@{/v1/empleados}">Empleados</a></h1>
+	<table border=5 align="center">
+		<thead>
+			<tr><th> Id <th> Nombre <th> Cargo <th> Salario <th>Accion<th>Accion</th>
+		</thead>
+		<tbody>
+			<tr th:if="${lista.empty}">
+					<td colspan="2"> Lista vacia </td>
+				</tr>
+			<tr th:each="e : ${lista}">
+					<td><span th:text="${e.id}"></span></td>
+					<td><span th:text="${e.nombre}"></span></td>
+					<td><span th:text="${e.cargo.nombre}"></span></td>
+					<td><span th:text="${e.cargo.salario}"></span></td>
+					<td style="background-color: rgb(255, 255, 255);"><a th:href="@{/v1/empleados/borrar/}+${e.id}">eliminar</a></td>
+					<td style="background-color: rgb(255, 255, 255);"><a th:href="@{/v1/empleados/editar/}+${e.id}">editar</a></td>
+				</tr>	
+		</tbody>
+	</table>
+	
+	<form align="center" th:action="${action}" th:object="${empleado}" method="post">
+			<br>
+			Id: <input type=text name=id th:value="${empleado?.id}">
+			Nombre: <input type=text name=nombre th:value="${empleado?.nombre}">
+			Cargo: <select th:field="*{cargo}">
+				<option th:each="cargo :${T(com.empleado.beans.CargoEnum).values()}"
+				th:value="${cargo}"
+				th:text="${cargo.nombre}">
+				</option>
+			</select>
+			<input type=submit name=submit th:value="${button}">
+		</form>
+		
+	<form align=center th:action="@{/v1/empleados/cargo}" th:object="${empleado}" method="get" style="height: 84px; ">
+		<h2>Buscar por cargo</h2>
+		<select th:field="*{cargo}">
+			<option th:each="cargo :${T(com.empleado.beans.CargoEnum).values()}"
+			th:value="${cargo}"
+			th:text="${cargo}">
+			</option>
+		</select>
+		<input type=submit name=cargo value="buscar">
+	</form>
+</body>
+</html>

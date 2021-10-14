@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: david
+Build-Jdk: 16.0.2
+Implementation-Title: m13-nivel-3
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: net.springboot.javaguides
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/m13-nivel-3
+Created-By: Maven Integration for Eclipse
+

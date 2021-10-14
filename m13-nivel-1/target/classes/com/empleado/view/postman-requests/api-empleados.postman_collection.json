@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "7ba01019-8dc8-4d07-9f91-4f71e0c5992a",
+		"name": "api-empleados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crear empleado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"nombre\": \"Juan Francisco\",\r\n    \"cargo\": \"GERENTE\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/empleados/nuevo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"empleados",
+						"nuevo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "imprimir listado empleados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/empleados/listado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"empleados",
+						"listado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar empleado por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/empleados/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"empleados",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "imprimir empleado por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/empleados/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"empleados",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar empleado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"nombre\": \"Juan Franciscosssssssssssssssss\",\r\n    \"cargo\": \"GERENTE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/empleados/actualizacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"empleados",
+						"actualizacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "imprimir empleado por cargo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/empleados/cargo/GERENTE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"empleados",
+						"cargo",
+						"GERENTE"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
